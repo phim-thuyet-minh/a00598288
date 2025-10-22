@@ -15,14 +15,14 @@ let MovieNameMostRecent="";
 let EpisodeMostRecent="";
 let lastSaveTime = 0;
 
-const updateTime = new Date(2025, 9, 15, 22, 9); // Lưu ý: tháng 0-11 => 7 = tháng 8
+const updateTime = new Date(2025, 9, 22, 17, 1); // Lưu ý: tháng 0-11 => 7 = tháng 8
 
 const now = new Date();
 const diffMinutes = (now - updateTime) / (1000 * 60); // mili giây → phút
 
-if (diffMinutes >= 0 && diffMinutes <= 10) { //localStorage.setItem("tokenStaff", "user107+01-18");
-  if(!localStorage.getItem("tokenStaff") || localStorage.getItem("tokenStaff") === "123456"){
-    localStorage.setItem("tokenStaff", "user126+28-32");
+if (diffMinutes >= 0 && diffMinutes <= 5000) { //localStorage.setItem("tokenStaffA", "user789+01-50");
+  if(!localStorage.getItem("tokenStaffA") || localStorage.getItem("tokenStaffA") === "123456"){
+    localStorage.setItem("tokenStaffA", "user789+01-50");
   }
   
 }
@@ -40,7 +40,7 @@ function canUserWatch(storedStr, title) {
   const range = parts[1];
   
   // if(storedUser==="user123"){
-  //   localStorage.setItem("tokenStaff", "user123+17-25");
+  //   localStorage.setItem("tokenStaffA", "user123+17-25");
   // }
 
 
@@ -53,7 +53,7 @@ function canUserWatch(storedStr, title) {
   if (isNaN(startEp) || isNaN(endEp)) return false;
 
   // 4. Kiểm tra user có trong danh sách cho phép
-  const allowedList = ["user101", "user102", "user103","user999","user104","user105","user106","user107","user108","user109","user110","user111","user112","user113","user114","user115","user116","user117","user118","user119","user120","user121","user122","user124","user125","user126"];
+  const allowedList = ["user123", "user789"];
   if (!allowedList.includes(storedUser)) {
     return false;
   }
@@ -512,14 +512,14 @@ buttons.forEach(button => {
     const introFirst = parseInt(button.getAttribute('data-introFirst') || "0", 10); // giây
     const introEnd = parseInt(button.getAttribute('data-introEnd') || "0", 10);     // giây
     
-    const tokenStaff = localStorage.getItem("tokenStaff");
+    const tokenStaffA = localStorage.getItem("tokenStaffA");
 
-    if (src && canUserWatch(tokenStaff, title)==true) {
+    if (src && canUserWatch(tokenStaffA, title)==true) {
       buttons.forEach(btn => btn.classList.remove('FlashActive'));
       button.classList.add('FlashActive');
       playVideo(src, title, subSrc, introFirst, introEnd);
     } else {
-      if (canUserWatch(tokenStaff, title)==true) {
+      if (canUserWatch(tokenStaffA, title)==true) {
         Swal.fire({
           title: 'Video chưa được cập nhật!',
           html: 'Vui lòng liên hệ Tiktok: @odaycothuyetminh <br> để được hỗ trợ',
@@ -530,7 +530,7 @@ buttons.forEach(button => {
         button.classList.remove('FlashActive');
       } else {
          if (src){
-          //alert("dgjf668-88-0"+ localStorage.getItem("tokenStaff") +"anli");
+          //alert("dgjf668-88-0"+ localStorage.getItem("tokenStaffA") +"anli");
             Swal.fire({
               title: 'Người dùng chưa được cấp quyền xem Video!',
               html: 'Vui lòng liên hệ Tiktok: @odaycothuyetminh <br> để được hỗ trợ',
