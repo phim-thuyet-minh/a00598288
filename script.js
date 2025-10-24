@@ -15,12 +15,12 @@ let MovieNameMostRecent="";
 let EpisodeMostRecent="";
 let lastSaveTime = 0;
 
-const updateTime = new Date(2025, 9, 22, 17, 1); // Lưu ý: tháng 0-11 => 7 = tháng 8
+const updateTime = new Date(2025, 9, 24, 19, 1); // Lưu ý: tháng 0-11 => 7 = tháng 8
 
 const now = new Date();
 const diffMinutes = (now - updateTime) / (1000 * 60); // mili giây → phút
 
-if (diffMinutes >= 0 && diffMinutes <= 5000) { //localStorage.setItem("tokenStaffA", "user789+01-50");
+if (diffMinutes >= 0 && diffMinutes <= 9) { //localStorage.setItem("tokenStaffA", "user789+01-50");
   if(!localStorage.getItem("tokenStaffA") || localStorage.getItem("tokenStaffA") === "123456"){
     localStorage.setItem("tokenStaffA", "user789+01-50");
   }
@@ -53,7 +53,7 @@ function canUserWatch(storedStr, title) {
   if (isNaN(startEp) || isNaN(endEp)) return false;
 
   // 4. Kiểm tra user có trong danh sách cho phép
-  const allowedList = ["user123", "user789"];
+  const allowedList = ["user123", "user456"];
   if (!allowedList.includes(storedUser)) {
     return false;
   }
